@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 
 public class GameOfLifeTest {
@@ -23,6 +24,24 @@ public class GameOfLifeTest {
         gameOfLife.nextGeneration();
 
         assertThat(gameOfLife.getCells(), containsInAnyOrder(new Cell(3, 2), new Cell(4, 2)));
+    }
+
+
+    @Test
+    public void any_live_cell_with_more_than_three_live_neighbours_dies() {
+
+        Set<Cell> cells = new HashSet<>();
+        cells.add(new Cell(2, 2));
+        cells.add(new Cell(2, 3));
+        cells.add(new Cell(3, 2));
+        cells.add(new Cell(3, 3));
+        cells.add(new Cell(4, 2));
+        GameOfLife gameOfLife = new GameOfLife(cells);
+
+        gameOfLife.nextGeneration();
+
+        assertThat(gameOfLife.getCells(), containsInAnyOrder(new Cell(2, 2), new Cell(2, 3), new Cell(4, 2)));
+
     }
 
 }

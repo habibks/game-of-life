@@ -16,7 +16,7 @@ public class GameOfLife {
         Set<Cell> aliveCells;aliveCells = new HashSet<>();
         for (Cell cell : cells) {
             int neighboursNumber = countNeighbours(cell);
-            if (neighboursNumber >= 2) {
+            if (neighboursNumber >= 2 && neighboursNumber <= 3) {
                 aliveCells.add(cell);
             }
         }

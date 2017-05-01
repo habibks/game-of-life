@@ -40,4 +40,8 @@ public class Cell {
         return y;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
 }

@@ -4,6 +4,8 @@ package net.habibksentini;
 import java.util.HashSet;
 import java.util.Set;
 
+import static net.habibksentini.Status.LIVE;
+
 public class GameOfLife {
 
     private Set<Cell> cells;
@@ -30,7 +32,7 @@ public class GameOfLife {
                 if (i == cell.getX() && j == cell.getY()) {
                     continue;
                 }
-                if (cells.contains(new Cell(i, j))) {
+                if (cells.contains(new Cell(i, j, LIVE))) {
                     neighboursNumber++;
                 }
             }

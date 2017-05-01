@@ -1,8 +1,10 @@
 package net.habibksentini;
 
+import java.util.Iterator;
+
 import static net.habibksentini.Status.DIE;
 
-public class GameWorld {
+public class GameWorld implements Iterable <Cell>{
 
     public final static int ROW_NUMBER = 5;
     public final static int COLUMN_NUMBER = 5;
@@ -19,5 +21,10 @@ public class GameWorld {
 
     public Cell[][] getCells() {
         return cells;
+    }
+
+    @Override
+    public GameWordIterator iterator() {
+        return new GameWordIterator(cells, COLUMN_NUMBER, ROW_NUMBER);
     }
 }
